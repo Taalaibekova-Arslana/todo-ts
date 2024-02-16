@@ -94,14 +94,10 @@ const TodoItem: FC<{ todo: TodoType[]; getTodo: () => void }> = ({
 									/>
 									<Button
 										onClick={() => saveTodo(item._id)}
-										variant="contained"
-										href="#contained-buttons">
+										variant="contained">
 										Save
 									</Button>
-									<Button
-										onClick={() => setSave(0)}
-										variant="contained"
-										href="#contained-buttons">
+									<Button onClick={() => setSave(0)} variant="outlined">
 										Cancel
 									</Button>
 								</>
@@ -114,15 +110,11 @@ const TodoItem: FC<{ todo: TodoType[]; getTodo: () => void }> = ({
 									<div className={scss.buttons}>
 										<Button
 											onClick={() => deleteTodo(item._id)}
-											variant="contained"
-											href="#contained-buttons">
+											variant="contained">
 											Delete
 										</Button>
 
-										<Button
-											onClick={() => editTodo(item)}
-											variant="contained"
-											href="#contained-buttons">
+										<Button onClick={() => editTodo(item)} variant="contained">
 											Edit
 										</Button>
 									</div>
