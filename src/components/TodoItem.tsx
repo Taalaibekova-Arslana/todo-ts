@@ -98,6 +98,12 @@ const TodoItem: FC<{ todo: TodoType[]; getTodo: () => void }> = ({
 										href="#contained-buttons">
 										Save
 									</Button>
+									<Button
+										onClick={() => setSave(0)}
+										variant="contained"
+										href="#contained-buttons">
+										Cancel
+									</Button>
 								</>
 							) : (
 								<>
