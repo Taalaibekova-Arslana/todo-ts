@@ -11,20 +11,22 @@ const TodoItem: FC<{ todo: TodoType[]; getTodo: () => void }> = ({
 	todo,
 	getTodo,
 }) => {
-	const [save, setSave] = useState(null);
+	const [save, setSave] = useState<number>(0);
 
-	const [value, setValue] = useState({
+	const [value, setValue] = useState<TodoType>({
+		_id: 0,
 		name: "",
 		password: "",
 		img: "",
-		price: "",
+		price: 0,
 	});
 
-	const deleteTodo = async (_id) => {
+	const deleteTodo = async (_id: number) => {
 		await axios.delete(`${url}/${_id}`);
 		getTodo();
 	};
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleInput = (e: any) => {
 		const { id, value } = e.target;
 		setValue((values) => ({
@@ -33,7 +35,7 @@ const TodoItem: FC<{ todo: TodoType[]; getTodo: () => void }> = ({
 		}));
 	};
 
-	const saveTodo = async (id) => {
+	const saveTodo = async (id: number) => {
 		const newData = {
 			name: value.name,
 			password: value.password,
@@ -41,11 +43,11 @@ const TodoItem: FC<{ todo: TodoType[]; getTodo: () => void }> = ({
 			price: value.price,
 		};
 		await axios.patch(`${url}/${id}`, newData);
-		setSave(null);
+		setSave(0);
 		getTodo();
 	};
 
-	const editTodo = async (item) => {
+	const editTodo = async (item: TodoType) => {
 		setValue(item);
 		setSave(item._id);
 	};

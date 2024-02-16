@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { TodoType } from "../types";
+// import { TodoType } from "../types";
 import axios from "axios";
 import { Button, TextField } from "@mui/material";
 import TodoItem from "./TodoItem";
@@ -10,7 +10,7 @@ import scss from "./TodoList.module.scss";
 
 const url = import.meta.env.VITE_BACKEND_URL;
 
-const TodoList: FC<TodoType[]> = () => {
+const TodoList: FC = () => {
 	const [value, setValue] = useState({
 		name: "",
 		password: "",
@@ -51,6 +51,7 @@ const TodoList: FC<TodoType[]> = () => {
 		getTodo();
 	}, []);
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleInput = (e: any) => {
 		const { id, value } = e.target;
 		setValue((values) => ({
